@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TROJAN AGRIFARM TECH | Livestock Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <div class="header-top">
+            <div class="logo">🚜 TROJAN AGRIFARM TECH</div>
+            <p class="tagline">AI-Powered Livestock Health Solutions</p>
+        </div>
+        <div class="header-content">
+            <h1>Livestock Disease Detection</h1>
+            <p class="subtitle">Instant veterinary insights powered by artificial intelligence</p>
+        </div>
+    </header>
+
+    <main class="main-card">
+        <div class="upload-wrapper">
+            <input type="file" id="imageInput" accept="image/*" capture="environment" hidden>
+            <label for="imageInput" class="custom-upload-btn">
+                <span class="upload-icon">📷</span>
+                <span class="upload-text">Tap to Snap or Upload Photo</span>
+            </label>
+        </div>
+
+        <div class="preview-frame">
+            <img id="previewImage" alt="Livestock preview" style="display: none;">
+            <p id="placeholderText">📷 No image selected</p>
+        </div>
+
+        <!-- Animal Behavior Description Section -->
+        <div class="behavior-description-section">
+            <label for="behaviorDescription" class="description-label">
+                📝 Animal Behavior & Symptoms (Optional)
+            </label>
+            <textarea 
+                id="behaviorDescription" 
+                class="behavior-textarea" 
+                placeholder="Example: &#10;• Animal is limping on right hind leg&#10;• Has reduced appetite&#10;• Produces less milk than usual&#10;• Swelling visible around hooves&#10;• Behavior is lethargic&#10;&#10;This description helps improve accuracy when image analysis is uncertain."
+                rows="4"
+            ></textarea>
+            <p class="description-helper">💡 More details = better diagnoses. Describe symptoms, behavior changes, or affected body parts.</p>
+        </div>
+
+        <button id="analyzeBtn" type="button" class="analyze-btn">
+            Analyze Health Condition
+        </button>
+
+
+        <div id="resultContainer" class="result-card hidden">
+            <h3>📋 Diagnostic Report</h3>
+            <div id="result" class="result-body">
+            </div>
+            <div class="result-actions">
+                <button id="searchDiseaseBtn" class="search-btn hidden" title="Search for more information">
+                    🔍 Learn More: Search Internet
+                </button>
+                <button id="chatWithVetBtn" class="vet-chat-btn hidden" title="Get additional context">
+                    💬 Add More Details
+                </button>
+                <button id="reportBtn" class="report-btn hidden" title="Report this case">
+                    📝 Report Case
+                </button>
+                <button id="analyzeNewBtn" class="analyze-new-btn" title="Analyze another image">
+                    📸 Analyze Another Animal
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About TROJAN AGRIFARM TECH</h4>
+                <p>Using AI and machine learning to protect livestock health across Africa and beyond.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Important Notice</h4>
+                <p>Always consult a licensed veterinarian for critical cases and treatment decisions.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Technology</h4>
+                <p>ResNet50 Deep Learning • Real-time Analysis • Mobile-Optimized</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:10px;">
+            <a href="/dashboard" style="color:#fff; text-decoration:underline; margin-right:20px;">📊 Dashboard</a>
+            <a href="/admin-login" style="color:#fff; text-decoration:underline;">Admin: View Reports</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TROJAN AGRIFARM TECH. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

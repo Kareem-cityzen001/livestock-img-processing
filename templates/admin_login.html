@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-container">
+    <header>
+        <div class="header-top">
+            <div class="logo">🚜 TROJAN AGRIFARM TECH</div>
+        </div>
+        <div class="header-content">
+            <h1>Admin Login</h1>
+            <p class="subtitle">Enter password to view submitted reports</p>
+        </div>
+    </header>
+
+    <main class="main-card">
+        <form method="post" style="max-width:420px;margin:0 auto;">
+            {% if error %}
+                <div style="color:#c62828;font-weight:700;margin-bottom:10px;">{{ error }}</div>
+            {% endif %}
+            <div style="margin-bottom:12px;">
+                <label for="password" style="display:block;margin-bottom:6px;font-weight:600;">Password</label>
+                <input id="password" name="password" type="password" style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;">
+            </div>
+            <div style="text-align:right;">
+                <button type="submit" class="analyze-new-btn">Unlock</button>
+            </div>
+        </form>
+
+        <div style="margin-top:18px;">
+            <a href="/" class="analyze-new-btn">← Back to Analyzer</a>
+        </div>
+    </main>
+</div>
+</body>
+</html>

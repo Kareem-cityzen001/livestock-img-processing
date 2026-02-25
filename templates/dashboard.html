@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TROJAN AGRIFARM TECH</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+
+<div class="dashboard-container">
+    <!-- Mobile Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo-small">🚜 TROJAN</div>
+        </div>
+        <div class="header-center">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="header-right">
+            <button class="notification-btn" id="notifBtn">🔔</button>
+        </div>
+    </header>
+
+    <!-- Navigation Sidebar -->
+    <nav class="dashboard-nav" id="dashboardNav">
+        <div class="nav-header">
+            <h2>🚜 TROJAN AGRIFARM TECH</h2>
+            <button class="nav-close" id="navClose">✕</button>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#dashboard" class="nav-link active">📊 Dashboard</a></li>
+            <li><a href="/" class="nav-link">📸 New Analysis</a></li>
+            <li><a href="#recent" class="nav-link">📋 Recent Results</a></li>
+            <li><a href="#stats" class="nav-link">📈 Statistics</a></li>
+            <li><a href="/reports" class="nav-link">📝 Reports</a></li>
+        </ul>
+        <div class="nav-footer">
+            <p>v1.0 • AI-Powered Livestock Health</p>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-card">
+                <h2>Welcome Back! 👋</h2>
+                <p id="welcomeTime"></p>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">📸</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Today's Analyses</span>
+                            <span class="stat-value" id="todayCount">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">✅</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Healthy Confirmed</span>
+                            <span class="stat-value" id="healthyCount">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⚠️</span>
+                        <div class="stat-info">
+                            <span class="stat-label">Issues Detected</span>
+                            <span class="stat-value" id="issueCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Action Cards -->
+        <section class="quick-actions-section">
+            <h3>Quick Actions</h3>
+            <div class="action-cards">
+                <a href="/" class="action-card primary">
+                    <div class="action-icon">📷</div>
+                    <div class="action-text">
+                        <h4>New Analysis</h4>
+                        <p>Analyze animal image</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+                <div class="action-card" onclick="scrollToSection('recent')">
+                    <div class="action-icon">⏱️</div>
+                    <div class="action-text">
+                        <h4>Recent Results</h4>
+                        <p>View last diagnosis</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="action-card" onclick="scrollToSection('stats')">
+                    <div class="action-icon">📊</div>
+                    <div class="action-text">
+                        <h4>Statistics</h4>
+                        <p>View insights</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <a href="/reports" class="action-card">
+                    <div class="action-icon">📝</div>
+                    <div class="action-text">
+                        <h4>All Reports</h4>
+                        <p>Submitted cases</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Recent Results Section -->
+        <section class="recent-section" id="recent">
+            <h3>Recent Analysis Results</h3>
+            <div class="recent-list" id="recentList">
+                <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <p>No recent analyses yet</p>
+                    <p class="empty-hint">Start by capturing an image</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Disease Overview -->
+        <section class="disease-section">
+            <h3>Common Livestock Diseases</h3>
+            <div class="disease-cards">
+                <div class="disease-card mastitis">
+                    <span class="disease-emoji">🥛</span>
+                    <h4>Mastitis</h4>
+                    <p>Udder inflammation</p>
+                    <span class="disease-badge">Infection</span>
+                </div>
+                <div class="disease-card lumpy">
+                    <span class="disease-emoji">🐄</span>
+                    <h4>Lumpy Skin</h4>
+                    <p>Viral infection</p>
+                    <span class="disease-badge">Viral</span>
+                </div>
+                <div class="disease-card footrot">
+                    <span class="disease-emoji">🦶</span>
+                    <h4>Foot Rot</h4>
+                    <p>Bacterial infection</p>
+                    <span class="disease-badge">Infection</span>
+                </div>
+                <div class="disease-card healthy">
+                    <span class="disease-emoji">✅</span>
+                    <h4>Healthy</h4>
+                    <p>No issues detected</p>
+                    <span class="disease-badge">Normal</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section" id="stats">
+            <h3>Your Analytics</h3>
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <div class="analytics-header">
+                        <span class="analytics-icon">📊</span>
+                        <h4>Analysis Summary</h4>
+                    </div>
+                    <div class="analytics-content">
+                        <div class="chart-placeholder">
+                            <canvas id="analysisChart"></canvas>
+                            <p>Total analyses: <strong id="totalAnalyses">0</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="analytics-header">
+                        <span class="analytics-icon">🎯</span>
+                        <h4>Accuracy Trend</h4>
+                    </div>
+                    <div class="analytics-content">
+                        <div class="accuracy-meter">
+                            <div class="meter-label">Model Confidence</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="accuracyMeter" style="width: 85%"></div>
+                            </div>
+                            <div class="meter-value">85%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analytics-card">
+                    <div class="analytics-header">
+                        <span class="analytics-icon">🕐</span>
+                        <h4>This Week</h4>
+                    </div>
+                    <div class="analytics-content">
+                        <ul class="weekly-stats">
+                            <li><span>Monday</span> <strong>12 analyses</strong></li>
+                            <li><span>Tuesday</span> <strong>8 analyses</strong></li>
+                            <li><span>Wednesday</span> <strong>15 analyses</strong></li>
+                            <li><span>Today</span> <strong id="weekCount">5 analyses</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <h3>📚 Veterinary Tips</h3>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <span class="tip-number">1</span>
+                    <h4>Good Image Quality</h4>
+                    <p>Ensure lighting is adequate and the affected area is clearly visible in the frame.</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-number">2</span>
+                    <h4>Describe Symptoms</h4>
+                    <p>Use the behavior description field for better accuracy. Include behavioral changes.</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-number">3</span>
+                    <h4>Consult Vet</h4>
+                    <p>Always verify AI diagnosis with a licensed veterinarian before treatment.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+        <a href="/" class="nav-tab">
+            <span class="nav-icon">📸</span>
+            <span class="nav-label">Analyze</span>
+        </a>
+        <a href="#recent" class="nav-tab">
+            <span class="nav-icon">📋</span>
+            <span class="nav-label">Recent</span>
+        </a>
+        <a href="#dashboard" class="nav-tab active">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#stats" class="nav-tab">
+            <span class="nav-icon">📈</span>
+            <span class="nav-label">Stats</span>
+        </a>
+        <a href="/reports" class="nav-tab">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Reports</span>
+        </a>
+    </nav>
+</div>
+
+<!-- Notification Toast -->
+<div class="notification-toast" id="notificationToast"></div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "Diagnosis": "healthy",
+  "behavior_description": "animal udder has wounds and milk sometimes with blood stains,or thick",
+  "Confidence": "72.03%",
+  "Status": "\u2713 Healthy",
+  "Severity": "None",
+  "Action": "Animal appears healthy. Continue regular monitoring and preventive care.",
+  "includes_farmer_notes": true,
+  "image_saved": "reports\\1771302900_Ayrshirecattle6.jpg",
+  "reported_at": 1771302900,
+  "report_id": 1771302900,
+  "includes_image": true
+}
