@@ -3,5 +3,5 @@ flask-cors
 torch
 torchvision
 opencv-python
-numpy
 pillow
+numpy
