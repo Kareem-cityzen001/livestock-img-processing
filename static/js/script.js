@@ -152,14 +152,15 @@ if (analyzeBtn) {
         });
 
         try {
-            console.log('[UPLOAD] Sending request to http://127.0.0.1:5000/upload');
-            const response = await fetch("http://127.0.0.1:5000/upload", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            });
+    console.log('[UPLOAD] Sending request to /upload');
+    const response = await fetch("/upload", {  // Changed from http://127.0.0.1:5000/upload
+        method: "POST",
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    });
+            
 
             console.log('[UPLOAD] Response status:', response.status, response.statusText);
 
@@ -299,7 +300,7 @@ if (analyzeBtn) {
 
             // Provide specific error messages
             if (error.message.includes("Failed to fetch")) {
-                errorMessage = "Cannot connect to server. Make sure Python server is running on http://127.0.0.1:5000";
+                errorMessage = "Cannot connect to the server. Please try again or contact support if the problem persists.";
             } else if (error.message.includes("Server returned invalid")) {
                 errorMessage = "Server returned an unexpected response. Check server logs for details.";
             } else if (error.message.includes("Server error")) {
